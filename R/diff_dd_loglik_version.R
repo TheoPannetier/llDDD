@@ -1,17 +1,23 @@
-diff_dd_loglik_version <- function(brts, pars1, methode  ='lsoda')
+#' Evaluate and compare dd_loglik() from two versions of DDD
+#'
+#' The function calls \code{dd_loglik()} from DDD_3.2 and from the current version and computes their difference.
+#'
+#' @param brts a set of branching times, all positive.
+#' @param pars1 numerical parameters to be passed to \code{dd_loglik()}
+#' @param pars2 numerical parameters to be passed to \code{dd_loglik()}
+#' @param missnumspec parameter passed to \code{dd_loglik()}, default to 0.
+#' @param methode The method used to solve the master equation, default is 'lsoda'.
+#'
+#' @details \code{dd_loglik()} parameters \code{pars2} are set to \code{c(4,1,1,0,2,1000)} here.
+#'
+#' @return a numeric vector of length 6 containing the input parameter values, the loglikelihood returned by \code{dd_loglik_3.2()} and \code{dd_loglik()} and their difference.
+#'
+#' @author Théo Pannetier
+#'
+#' @export
+
+diff_dd_loglik_version <- function(brts, pars1, pars2, missnumspec = 0, methode  ='analytical')
 {
-  # Set parameters
-  pars2 = c(
-    1000, # max lx
-    1, # ddmodel
-    1, # cond
-    1, # btorph
-    0, # print
-    2  # soc
-  )
-  missnumspec = 0
-  
-  source("./scripts/compare_bd_loglik/dd_loglik_3.2.R")
   # loglik with ode()
   loglik_3.2 <- dd_loglik_3.2(
     pars1 = pars1,
@@ -28,8 +34,17 @@ diff_dd_loglik_version <- function(brts, pars1, methode  ='lsoda')
     missnumspec = missnumspec,
     methode = methode
   )
-  
-  loglik_diff = abs(loglik_3.8 - loglik_3.8)
-  
-  return(c(loglik_3.8, loglik_3.8, loglik_diff))
+
+  loglik_diff = abs(loglik_3.8 - loglik_3.2)
+
+  output = c(
+    "lambda0" = pars1[1],
+    "mu0" = pars1[2],
+    "K" = pars1[2],
+    "loglik_3.2" = loglik_3.2,
+    "loglik_3.8" = loglik_3.8,
+    "loglik_diff" = loglik_diff
+  )
+
+  return(output)
 }
