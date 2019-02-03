@@ -1,0 +1,18 @@
+Package: llDDD
+Type: Package
+Title: Compare likelihood functions from different versions of DDD
+Depend:
+    R (>= 3.1.0), 
+    DDD
+Version: 0.1.0
+Author: Theo Pannetier
+Maintainer: Theo Pannetier <t.s.c.pannetier@rug.nl>
+Description: A small package to gather functions used to verify whether
+   the addition of pieces FORTRAN code change the way the likelihood is
+   estimated in DDD.3.8.
+License: GPL-3
+Encoding: UTF-8
+Imports:
+  DDD
+LazyData: true
+RoxygenNote: 6.1.0
