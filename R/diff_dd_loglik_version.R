@@ -19,7 +19,7 @@
 diff_dd_loglik_version <- function(brts, pars1, pars2, missnumspec = 0, methode  ='analytical')
 {
   # loglik with ode()
-  loglik_3.2 <- dd_loglik_3.2(
+  loglik_3.2 <- llDDD::dd_loglik_3.2(
     pars1 = pars1,
     pars2 = pars2,
     brts = brts,
