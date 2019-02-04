@@ -37,7 +37,7 @@ diff_dd_loglik_version <- function(brts, pars1, pars2, missnumspec = 0, methode 
 
   loglik_diff = abs(loglik_3.8 - loglik_3.2)
 
-  output = c(
+  output <- c(
     "lambda0" = pars1[1],
     "mu0" = pars1[2],
     "K" = pars1[2],
