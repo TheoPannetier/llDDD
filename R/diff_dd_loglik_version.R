@@ -6,9 +6,8 @@
 #' @param pars1 numerical parameters to be passed to \code{dd_loglik()}
 #' @param pars2 numerical parameters to be passed to \code{dd_loglik()}
 #' @param missnumspec parameter passed to \code{dd_loglik()}, default to 0.
-#' @param methode The method used to solve the master equation, default is 'lsoda'.
 #'
-#' @details \code{dd_loglik()} parameters \code{pars2} are set to \code{c(4,1,1,0,2,1000)} here.
+#' @details \code{dd_loglik()} parameters \code{pars2} are set to \code{c(4,1,1,0,2,1000)} here. \code{methode} is set to 'analytical' as I don't know whetehr other inputs work.
 #'
 #' @return a numeric vector of length 6 containing the input parameter values, the loglikelihood returned by \code{dd_loglik_3.2()} and \code{dd_loglik()} and their difference.
 #'
@@ -16,8 +15,11 @@
 #'
 #' @export
 
-diff_dd_loglik_version <- function(brts, pars1, pars2, missnumspec = 0, methode  ='analytical')
+diff_dd_loglik_version <- function(brts, pars1, pars2, missnumspec = 0)
 {
+
+  methode  ='analytical' # I don't know yet whether other inputs work
+
   # loglik with ode()
   loglik_3.2 <- llDDD::dd_loglik_3.2(
     pars1 = pars1,
