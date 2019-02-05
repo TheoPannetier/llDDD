@@ -15,11 +15,8 @@
 #'
 #' @export
 
-diff_dd_loglik_version <- function(brts, pars1, pars2, missnumspec = 0)
+diff_dd_loglik_version <- function(brts, pars1, pars2, missnumspec = 0, methode  ='analytical')
 {
-
-  methode  ='analytical' # I don't know yet whether other inputs work
-
   # loglik with ode()
   loglik_3.2 <- llDDD::dd_loglik_3.2(
     pars1 = pars1,
@@ -42,7 +39,7 @@ diff_dd_loglik_version <- function(brts, pars1, pars2, missnumspec = 0)
   output = c(
     "lambda0" = pars1[1],
     "mu0" = pars1[2],
-    "K" = pars1[2],
+    "K" = pars1[3],
     "loglik_3.2" = loglik_3.2,
     "loglik_3.8" = loglik_3.8,
     "loglik_diff" = loglik_diff
