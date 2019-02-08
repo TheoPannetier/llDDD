@@ -3,6 +3,8 @@
 #' Identical to DDD::bd_ML(), except that this one calls bd_loglik_3.2(). See DDD documentation for details.
 #'
 #' @author Rampal S. Etienne & Bart Haegeman
+#'
+#' @export
 
 bd_ML_3.2 = function(brts, initparsopt = c(0.1,0.05 * (tdmodel <= 1) + 10 * (length(brts) + missnumspec) * (tdmodel > 1)), idparsopt = c(1,2 + (tdmodel > 1)), idparsfix = (1:4)[-idparsopt], parsfix = rep(0,4)[idparsfix], missnumspec = 0, tdmodel = 0, cond = 1, btorph = 1, soc = 2, tol = c(1E-3, 1E-4, 1E-6), maxiter = 1000 * round((1.25)^length(idparsopt)), changeloglikifnoconv = FALSE, optimmethod = 'subplex',methode = 'lsoda', verbose = 0)
 {
