@@ -4,7 +4,8 @@
 \alias{diff_bd_loglik_version}
 \title{Evaluate and compare bd_loglik() from two versions of DDD}
 \usage{
-diff_bd_loglik_version(brts, pars1, pars2, missnumspec = 0)
+diff_bd_loglik_version(brts, pars1, pars2, missnumspec = 0,
+  methode = "lsoda")
 }
 \arguments{
 \item{brts}{a set of branching times, all positive.}
